@@ -459,13 +459,13 @@ function setTransactionType(type) {
   if (type === 'income') {
     btnIncome.classList.add('active');
     btnExpense.classList.remove('active');
-    submitBtn.className = 'w-full py-3.5 px-5 rounded-2xl font-extrabold text-sm text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2 transition transform active:scale-[0.99]';
-    submitText.textContent = state.editingId ? 'Update Data Pemasukan' : 'Simpan Pemasukan (+)';
+    submitBtn.className = 'btn-income-solid w-full py-3 px-5 font-semibold text-sm flex items-center justify-center gap-2';
+    submitText.textContent = state.editingId ? 'Perbarui Data Pemasukan' : 'Simpan Pemasukan (+)';
   } else {
     btnExpense.classList.add('active');
     btnIncome.classList.remove('active');
-    submitBtn.className = 'w-full py-3.5 px-5 rounded-2xl font-extrabold text-sm text-white bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 shadow-lg shadow-rose-500/25 flex items-center justify-center gap-2 transition transform active:scale-[0.99]';
-    submitText.textContent = state.editingId ? 'Update Data Pengeluaran' : 'Simpan Pengeluaran (-)';
+    submitBtn.className = 'btn-expense-solid w-full py-3 px-5 font-semibold text-sm flex items-center justify-center gap-2';
+    submitText.textContent = state.editingId ? 'Perbarui Data Pengeluaran' : 'Simpan Pengeluaran (-)';
   }
 
   populateCategorySelect(type);
@@ -1851,15 +1851,15 @@ function initEventListeners() {
   btnSplit?.addEventListener('click', () => {
     splitContainer.classList.remove('hidden');
     combinedContainer.classList.add('hidden');
-    btnSplit.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-sm transition';
-    btnCombined.className = 'px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-slate-900 transition';
+    btnSplit.classList.add('active');
+    btnCombined.classList.remove('active');
   });
 
   btnCombined?.addEventListener('click', () => {
     splitContainer.classList.add('hidden');
     combinedContainer.classList.remove('hidden');
-    btnCombined.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-sm transition';
-    btnSplit.className = 'px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-slate-900 transition';
+    btnCombined.classList.add('active');
+    btnSplit.classList.remove('active');
   });
 
   // Filters

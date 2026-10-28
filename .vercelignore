@@ -1,0 +1,4 @@
+.agents/
+.agent/
+.git/
+deploy-ke-vercel.bat
