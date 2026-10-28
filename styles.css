@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap');
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  overflow-x: hidden;
+}
+
+.font-mono-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(148, 163, 184, 0.1);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.55);
+}
+
+/* Glassmorphism & Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.dark .glass-card {
+  background: rgba(30, 41, 59, 0.82);
+  border: 1px solid rgba(51, 65, 85, 0.8);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.35);
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 35px -12px rgba(15, 23, 42, 0.12);
+}
+
+.dark .stat-card:hover {
+  box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Ambient Background Mesh */
+.bg-mesh {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.09) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(244, 63, 94, 0.06) 0px, transparent 50%);
+}
+
+.dark.bg-mesh,
+.dark .bg-mesh {
+  background-color: #0b1120;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.12) 0px, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.14) 0px, transparent 45%),
+    radial-gradient(at 50% 100%, rgba(244, 63, 94, 0.08) 0px, transparent 45%);
+}
+
+/* Type Selector Button Active States */
+.type-btn-income.active {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 8px 20px -4px rgba(16, 185, 129, 0.45);
+}
+
+.type-btn-expense.active {
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 8px 20px -4px rgba(244, 63, 94, 0.45);
+}
+
+/* Tab Pills */
+.nav-tab {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.nav-tab.active {
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+  color: white;
+  box-shadow: 0 6px 16px -3px rgba(79, 70, 229, 0.4);
+}
+
+/* Pulse Live Indicator */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.live-dot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background-color: #10b981;
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* Smooth Fade-in Animation */
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInSlide 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Table Row Hover */
+.tr-hover {
+  transition: background-color 0.15s ease;
+}
+
+.tr-hover:hover {
+  background-color: rgba(99, 102, 241, 0.04);
+}
+
+.dark .tr-hover:hover {
+  background-color: rgba(99, 102, 241, 0.1);
+}
+
+/* Print Styles for Official Financial Report */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .glass-card {
+    box-shadow: none !important;
+    border: 1px solid #cbd5e1 !important;
+    background: #ffffff !important;
+    break-inside: avoid;
+  }
+  .print-full-width {
+    grid-column: span 12 / span 12 !important;
+    width: 100% !important;
+  }
+}

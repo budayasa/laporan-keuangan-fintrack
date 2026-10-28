@@ -1,0 +1,10 @@
+{
+  "name": "fintrack-pro-laporan-keuangan",
+  "version": "1.0.0",
+  "description": "Aplikasi Pencatatan & Rekap Laporan Keuangan Web (Vercel Ready)",
+  "private": true,
+  "scripts": {
+    "start": "npx serve .",
+    "deploy": "npx vercel --prod"
+  }
+}
